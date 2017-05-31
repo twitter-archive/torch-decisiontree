@@ -1,4 +1,5 @@
 local S2D, parent = torch.class("nn.Sparse2Dense", "nn.Module")
+local dt = require 'decisiontree'
 
 function S2D:__init(features)
    parent.__init(self)
