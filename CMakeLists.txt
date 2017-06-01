@@ -5,8 +5,6 @@ CMAKE_POLICY(VERSION 2.6)
 
 FIND_PACKAGE(Torch REQUIRED)
 
-SET(BUILD_STATIC YES) # makes sure static targets are enabled in ADD_TORCH_PACKAGE
-
 SET(CMAKE_C_FLAGS "--std=c99 -pedantic -Werror -Wall -Wextra -Wno-unused-function -D_GNU_SOURCE ${CMAKE_C_FLAGS}")
 SET(src
    init.c
@@ -43,6 +41,9 @@ ADD_TORCH_PACKAGE(decisiontree "${src}" "${luasrc}" "A decision tree library, fo
 
 TARGET_LINK_LIBRARIES(decisiontree luaT TH)
 
-SET_TARGET_PROPERTIES(decisiontree_static PROPERTIES COMPILE_FLAGS "-fPIC -DSTATIC_TH")
+IF (BUILD_STATIC OR "$ENV{STATIC_TH}" STREQUAL "YES")
+   MESSAGE(building decisiontree statically)
+   SET_TARGET_PROPERTIES(decisiontree_static PROPERTIES COMPILE_FLAGS "-fPIC -DSTATIC_TH")
+ENDIF()
 
 INSTALL(FILES ${luasrc} DESTINATION "${Torch_INSTALL_LUA_PATH_SUBDIR}/decisiontree")
