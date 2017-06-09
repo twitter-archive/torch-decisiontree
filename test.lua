@@ -1,5 +1,4 @@
 local dt = require "decisiontree._env"
-torch.manualSeed(0)
 
 local dttest = {}
 local nloop = 50
