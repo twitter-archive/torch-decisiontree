@@ -1,10 +1,12 @@
-# Torch Decision Tree Library
+# Torch decision tree library
 
 ```lua
 local dt = require 'decisiontree'
 ```
 
-This package implements gradient boosted decision trees (GBDT) and random forests for sparse and dense tensors.
+This project implements random forests and gradient boosted decision trees (GBDT).
+The latter uses gradient tree boosting.
+Both use ensemble learning to produce ensembles of decision trees (that is, forests).
 
 ## `nn.DFD`
 
