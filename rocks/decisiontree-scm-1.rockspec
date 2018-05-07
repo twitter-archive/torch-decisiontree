@@ -2,7 +2,7 @@ package = "decisiontree"
 version = "scm-1"
 
 source = {
-   url = "git://github.com/Twitter/decisiontree",
+   url = "git://github.com/Twitter/torch-decisiontree",
    tag = "master"
 }
 
